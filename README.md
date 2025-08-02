@@ -1,3 +1,92 @@
+
+Aqui estão os requisitos para usar o script setup-anon-auto.sh corretamente:
+
+
+---
+
+✅ Requisitos do sistema
+
+🖥️ Sistema Operacional
+
+Linux Debian-based (como Ubuntu, Debian, Linux Mint)
+
+Arquitetura compatível com os pacotes (amd64, arm64, etc.)
+
+
+
+---
+
+📦 Pacotes e dependências
+
+O script instala automaticamente os seguintes pacotes, mas o sistema precisa permitir isso:
+
+wireguard
+
+tor
+
+dnscrypt-proxy
+
+iptables
+
+netcat
+
+nmap
+
+curl
+
+dialog
+
+
+> Importante: o sistema precisa estar conectado à internet para que os pacotes sejam baixados com sucesso via apt.
+
+
+
+
+---
+
+🔑 Configuração necessária do usuário
+
+Privilégios de superusuário (root):
+O script precisa ser executado com sudo para realizar alterações no sistema (instalação de pacotes, regras de firewall, criação de serviços, etc.).
+
+Chaves e dados da VPN:
+Você precisará editar manualmente o arquivo /etc/wireguard/wg0.conf gerado pelo script com:
+
+Sua chave privada (PrivateKey)
+
+A chave pública do servidor VPN (PublicKey)
+
+O endereço do servidor (Endpoint)
+
+
+
+
+---
+
+🧠 Conhecimentos recomendados (opcional)
+
+Embora o script automatize tudo, é útil ter noções básicas de:
+
+Terminal Linux
+
+Uso de VPNs (WireGuard)
+
+Conceitos de firewall e segurança de rede
+
+Tor e ProxyChains
+
+
+
+---
+
+⚠️ Outros requisitos e observações
+
+O serviço systemd deve estar presente e funcional, já que o script cria serviços para rotação automática da VPN.
+
+Evite executar em sistemas com regras personalizadas de firewall já existentes, pois o script sobrescreve as regras.
+
+O menu só funciona corretamente com dialog instalado (o script o instala).
+
 🖥️ Como funciona o setup-anon-auto.sh no terminal
 
 ✅ 1. Preparação e execução
@@ -67,6 +156,7 @@ Navegue com as setas, escolha uma opção com Enter. O status mostra o estado da
 🛑 Dica importante
 
 Antes de usar, edite o arquivo /etc/wireguard/wg0.conf com sua chave privada e dados do servidor VPN. O script fornece um modelo padrão.
+
 
 
 ---
